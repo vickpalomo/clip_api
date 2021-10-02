@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 3000:3000
+    command: npm run dev
+  db:
+      image: kartoza/postgis:11.0-2.5
+      ports:
+          - "5432:5432"
+      environment:
+            POSTGRES_MULTIPLE_EXTENSIONS: postgis,hstore,postgis_topology,pg_trgm
+            POSTGRES_DBNAME: clip
+            POSTGRES_USER: clip
+            POSTGRES_PASS: secret
+      volumes:
+            - ./pg_data:/var/lib/postgresql

@@ -1,0 +1,77 @@
+{
+  "name": "clip_api",
+  "version": "1.0.0",
+  "description": "API Rest que consumira la app My Dinner",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "start:prod": "node index.js",
+    "prepare": "husky install",
+    "eslint": "eslint *.js controllers/*.js m*/*.js routes/*.*js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vickpalomo/clip_api.git"
+  },
+  "author": "Victor Palomo",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.23.3",
+    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^6.0.0",
+    "jest": "^27.0.6",
+    "jest-sonar-reporter": "^2.0.0",
+    "nodemon": "^2.0.4",
+    "sonarqube-scanner": "^2.8.1",
+    "supertest": "^6.1.4"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dayjs": "^1.10.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.0.3",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.7",
+    "sequelize-cli": "^5.5.1",
+    "sequelize-date-no-tz-postgres": "^1.0.0",
+    "standard": "^14.3.3",
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-express": "^4.1.4"
+  },
+  "nodemonConfig": {
+    "restartable": "rs",
+    "ignore": [
+      ".git*",
+      "node_modules/**/node_modules",
+      "wait-for-it.sh",
+      ".env*",
+      "docker-compose*.yml",
+      "Dockerfile",
+      ".dockerignore"
+    ],
+    "ext": "js,json",
+    "verbose": false,
+    "execMap": {
+      "js": "node --harmony"
+    }
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/vickpalomo/clip_api/issues"
+  },
+  "homepage": "https://github.com/vickpalomo/clip_api#readme"
+}
