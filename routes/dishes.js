@@ -6,7 +6,7 @@ const router = express.Router()
 /**
  * @swagger
  * tags:
- *   name: dishes
+ *   name: Dishes
  *   description: dishes
  */
 
@@ -15,12 +15,12 @@ const router = express.Router()
  * /api/v1/dishes/:
  *    get:
  *      summary: List dishes
- *      tags: [dishes]
+ *      tags: [Dishes]
  *      responses:
  *        '200':
- *          description: dish updated
+ *          description: dish list
  *        '404':
- *          description: dish not found
+ *          description: dishes not found
  *        '500':
  *          description: Internal Server Error
  */
@@ -31,7 +31,7 @@ router.get('/', list)
  * /api/v1/dishes/{uuid}:
  *    get:
  *      summary: dish detail
- *      tags: [dishes]
+ *      tags: [Dishes]
  *      parameters:
  *        - in: path
  *          name: uuid
@@ -56,7 +56,7 @@ router.get('/:uuid', detail)
  * /api/v1/dishes/:
  *    post:
  *      summary: Create dish
- *      tags: [dishes]
+ *      tags: [Dishes]
  *      requestBody:
  *        required: true
  *        content:
@@ -92,7 +92,7 @@ router.post('/', create)
  * /api/v1/dishes/{uuid}:
  *    put:
  *      summary: Update dish
- *      tags: [dishes]
+ *      tags: [Dishes]
  *      parameters:
  *        - in: path
  *          name: uuid

@@ -72,15 +72,8 @@ router.get('/:uuid', detail)
  *                address:
  *                  type: object
  *                  properties:
- *                    casa:
- *                      type: object
- *                      properties:
- *                        street:
- *                          type: string
- *                        number:
- *                          type: string
- *                        colony:
- *                          type: string
+ *                    [name]:
+ *                      type: string
  *              type: object
  *      responses:
  *        '200':
@@ -120,15 +113,8 @@ router.post('/', create)
  *                address:
  *                  type: object
  *                  properties:
- *                    casa:
- *                      type: object
- *                      properties:
- *                        street:
- *                          type: string
- *                        number:
- *                          type: string
- *                        colony:
- *                          type: string
+ *                    [name]:
+ *                      type: string
  *              type: object
  *      responses:
  *        '201':
