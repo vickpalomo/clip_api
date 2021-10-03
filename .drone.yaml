@@ -3,11 +3,11 @@ type: docker
 name: clip-api
 
 steps:
-# - name: test
-#   image: node:12.22-alpine3.14
-#   commands: 
-#   - npm install
-#   - npm test
+- name: test
+  image: node:12.22-alpine3.14
+  commands: 
+  - npm install
+  - npm test
 
 - name: code-analysis
   image: aosapps/drone-sonar-plugin

@@ -2,13 +2,13 @@ const db = require('../models')
 const { isUuid } = require('../tools')
 
 const list = (req, res, next) => {
-  db.clients.findAll({
+  db.dishes.findAll({
     attributes: {
       exclude: ['id']
     }
-  }).then(clients => {
-    if (clients.length === 0) res.status(404).send({ code: 404, data: {}, msg: 'Not found' })
-    return res.status(200).send({ code: 200, data: clients, msg: 'Ok' })
+  }).then(dishes => {
+    if (dishes.length === 0) res.status(404).send({ code: 404, data: {}, msg: 'Not found' })
+    return res.status(200).send({ code: 200, data: dishes, msg: 'Ok' })
   }).catch(e => {
     next(e)
   })
@@ -19,45 +19,35 @@ const detail = (req, res, next) => {
   if (!isUuid(uuid)) {
     return res.status(400).send({ code: 400, data: {}, msg: 'Uuid bad formated' })
   }
-  db.clients.findOne({
+  db.dishes.findOne({
     attributes: {
       exclude: ['id']
     },
     where: {
       uuid
     }
-  }).then(client => {
-    if (!client) return res.status(404).send({ code: 404, data: {}, msg: 'Not found' })
-    return res.status(200).send({ code: 200, data: client, msg: 'Ok' })
+  }).then(dish => {
+    if (!dish) return res.status(404).send({ code: 404, data: {}, msg: 'Not found' })
+    return res.status(200).send({ code: 200, data: dish, msg: 'Ok' })
   }).catch(e => {
     next(e)
   })
 }
 
 const create = (req, res, next) => {
-  const data = ['name', 'email', 'address', 'telephone']
+  const data = ['name', 'description', 'price', 'kind_food', 'status']
   const body = Object.keys(req.body)
   const validate = data.filter(item => !body.includes(item))
   if (validate.length !== 0) return res.status(400).send({ code: 400, data: {}, msg: `${validate.join(',')} are required` })
-  const { name, email, address, telephone } = req.body
-  db.clients.findOne({
-    where: {
-      email: email
-    }
-  }).then(client => {
-    if (client) {
-      const e = new Error('Email exist already')
-      e.type = 400
-      throw e
-    }
-    return db.clients.create({
-      name,
-      email,
-      address,
-      telephone
-    })
-  }).then(client => {
-    return res.status(200).send({ code: 200, data: client, msg: 'Created' })
+  const { name, description, price, kind_food, status } = req.body
+  db.dishes.create({
+    name,
+    description,
+    price,
+    kind_food,
+    status
+  }).then(dish => {
+    return res.status(200).send({ code: 200, data: dish, msg: 'Created' })
   }).catch(e => {
     next(e)
   })
@@ -69,29 +59,29 @@ const update = (req, res, next) => {
     return res.status(400).send({ code: 400, data: {}, msg: 'Uuid bad formated' })
   }
   const dataUpdate = Object.keys(req.body)
-  const data = ['name', 'address', 'telephone'].reduce((custom, item) => {
+  const data = ['name', 'description', 'price', 'kind_food', 'status'].reduce((custom, item) => {
     if (dataUpdate.includes(item)) custom[item] = req.body[item]
     return custom
   }, {})
   if (Object.keys(data).length === 0) return res.status(400).send({ code: 400, data: {}, msg: 'No data for update' })
-  db.clients.findOne({
+  db.dishes.findOne({
     where: {
       uuid
     }
-  }).then(client => {
-    if (!client) {
-      const e = new Error('Client not found')
+  }).then(dish => {
+    if (!dish) {
+      const e = new Error('dish not found')
       e.type = 404
       throw e
     }
-    return db.clients.update(data, {
+    return db.dishes.update(data, {
       where: {
         uuid
       }
     })
   }).then(rows => {
     if (rows === 0) return res.status(400).send({ code: 400, data: {}, msg: 'No update' })
-    return res.status(201).send({ code: 201, data: {}, msg: 'Client updated' })
+    return res.status(201).send({ code: 201, data: {}, msg: 'dish updated' })
   }).catch(e => {
     next(e)
   })

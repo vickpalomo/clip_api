@@ -1,26 +1,26 @@
 const express = require('express')
-const { create, update, list, detail } = require('../controllers/clientsController')
+const { create, update, list, detail } = require('../controllers/dishesController')
 
 const router = express.Router()
 
 /**
  * @swagger
  * tags:
- *   name: Clients
- *   description: Clients
+ *   name: dishes
+ *   description: dishes
  */
 
 /**
  * @swagger
- * /api/v1/clients/:
+ * /api/v1/dishes/:
  *    get:
- *      summary: List clients
- *      tags: [Clients]
+ *      summary: List dishes
+ *      tags: [dishes]
  *      responses:
  *        '200':
- *          description: client updated
+ *          description: dish updated
  *        '404':
- *          description: client not found
+ *          description: dish not found
  *        '500':
  *          description: Internal Server Error
  */
@@ -28,24 +28,24 @@ router.get('/', list)
 
 /**
  * @swagger
- * /api/v1/clients/{uuid}:
+ * /api/v1/dishes/{uuid}:
  *    get:
- *      summary: Client detail
- *      tags: [Clients]
+ *      summary: dish detail
+ *      tags: [dishes]
  *      parameters:
  *        - in: path
  *          name: uuid
  *          required: true
  *          schema:
  *            type: string
- *          description: uuid client
+ *          description: uuid dish
  *      responses:
  *        '200':
- *          description: client updated
+ *          description: dish updated
  *        '400':
  *          description: bad request
  *        '404':
- *          description: client not found
+ *          description: dish not found
  *        '500':
  *          description: Internal Server Error
  */
@@ -53,10 +53,10 @@ router.get('/:uuid', detail)
 
 /**
  * @swagger
- * /api/v1/clients/:
+ * /api/v1/dishes/:
  *    post:
- *      summary: Create client
- *      tags: [Clients]
+ *      summary: Create dish
+ *      tags: [dishes]
  *      requestBody:
  *        required: true
  *        content:
@@ -65,30 +65,23 @@ router.get('/:uuid', detail)
  *              properties:
  *                name:
  *                  type: string
- *                email:
+ *                description:
  *                  type: string
- *                telephone:
+ *                price:
+ *                  type: number
+ *                  format: float
+ *                kind_food:
  *                  type: string
- *                address:
- *                  type: object
- *                  properties:
- *                    casa:
- *                      type: object
- *                      properties:
- *                        street:
- *                          type: string
- *                        number:
- *                          type: string
- *                        colony:
- *                          type: string
+ *                status:
+ *                  type: string
  *              type: object
  *      responses:
  *        '200':
- *          description: client updated
+ *          description: dish updated
  *        '400':
  *          description: bad request
  *        '404':
- *          description: client not found
+ *          description: dish not found
  *        '500':
  *          description: Internal Server Error
  */
@@ -96,17 +89,17 @@ router.post('/', create)
 
 /**
  * @swagger
- * /api/v1/clients/{uuid}:
+ * /api/v1/dishes/{uuid}:
  *    put:
- *      summary: Update client
- *      tags: [Clients]
+ *      summary: Update dish
+ *      tags: [dishes]
  *      parameters:
  *        - in: path
  *          name: uuid
  *          required: true
  *          schema:
  *            type: string
- *          description: uuid client to be updated
+ *          description: uuid dish to be updated
  *      requestBody:
  *        required: true
  *        content:
@@ -115,28 +108,23 @@ router.post('/', create)
  *              properties:
  *                name:
  *                  type: string
- *                telephone:
+ *                description:
  *                  type: string
- *                address:
- *                  type: object
- *                  properties:
- *                    casa:
- *                      type: object
- *                      properties:
- *                        street:
- *                          type: string
- *                        number:
- *                          type: string
- *                        colony:
- *                          type: string
+ *                price:
+ *                  type: number
+ *                  format: float
+ *                kind_food:
+ *                  type: string
+ *                status:
+ *                  type: string
  *              type: object
  *      responses:
  *        '201':
- *          description: client updated
+ *          description: dish updated
  *        '400':
  *          description: bad request
  *        '404':
- *          description: client not found
+ *          description: dish not found
  *        '500':
  *          description: Internal Server Error
  */
