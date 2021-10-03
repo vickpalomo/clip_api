@@ -64,5 +64,8 @@ module.exports = (sequelize, DataTypes) => {
     paranoid: true,
     tableName: 'dishes'
   })
+  dishes.associate = function (models) {
+    dishes.hasMany(models.orders_detail, { sourceKey: 'uuid', foreignKey: 'dish_uuid' })
+  }
   return dishes
 }
