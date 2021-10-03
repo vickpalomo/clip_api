@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const { errorHandler } = require('./middlewares/errorHandler')
 const port = process.env.APP_PORT || '3000'
 
 const compression = require('compression')
@@ -24,6 +25,7 @@ app.use(express.static('public'))
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 app.use('/documentation', express.static('out'))
 app.use('/api/v1', routes)
+app.use(errorHandler)
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(port, () => console.log(`API listening at http://localhost:${port}`))
