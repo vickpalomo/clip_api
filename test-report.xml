@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="/home/vick/projects/clip_api/__tests__/default.test.js">
+    <testCase name="adds 1 + 2 to equal 3" duration="2"/>
+  </file>
+</testExecutions>
