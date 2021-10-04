@@ -9,7 +9,9 @@ services:
       - 3000:3000
     command: npm run dev
   db:
-      image: postgres:11.13
+      build:
+        context: .
+        dockerfile: Dockerfile-Postgres
       ports:
           - "5432:5432"
       environment:
