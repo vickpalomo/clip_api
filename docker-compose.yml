@@ -8,10 +8,13 @@ services:
     ports:
       - 3000:3000
     command: npm run dev
+    environment:
+      - DB_HOST_DEVELOPMENT=postgres
   db:
       build:
         context: .
         dockerfile: Dockerfile-Postgres
+      hostname: postgres
       ports:
           - "5432:5432"
       environment:

@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="/home/vick/projects/clip_api/__tests__/default.test.js">
-    <testCase name="adds 1 + 2 to equal 3" duration="2"/>
+  <file path="/home/vick/projects/clip_api/__tests__/dishes.test.js">
+    <testCase name="Dishes Controller Create Dish Post Create dishes code 400 name,description are required" duration="9"/>
+    <testCase name="Dishes Controller Create Dish Post Create dishes code 200 Created" duration="25"/>
+    <testCase name="Dishes Controller Update Dish Put Update dishes code 400 Uuid bad formated" duration="3"/>
+    <testCase name="Dishes Controller Update Dish Put Update dishes code 400 No data for update" duration="6"/>
+    <testCase name="Dishes Controller Update Dish Put Update dishes code 404 Dish not found" duration="36"/>
+    <testCase name="Dishes Controller Update Dish Put Update dishes code 201 Client updated" duration="34"/>
+  </file>
+  <file path="/home/vick/projects/clip_api/__tests__/clients.test.js">
+    <testCase name="Clients Controller Create Client Post Create Clients code 400 email, name are required" duration="10"/>
+    <testCase name="Clients Controller Create Client Post Create Clients code 400 Email exist already" duration="34"/>
+    <testCase name="Clients Controller Create Client Post Create Clients code 200 Created" duration="31"/>
+    <testCase name="Clients Controller Update Client Put Update Clients code 400 Uuid bad formated" duration="7"/>
+    <testCase name="Clients Controller Update Client Put Update Clients code 400 No data for update" duration="5"/>
+    <testCase name="Clients Controller Update Client Put Update Clients code 404 Client not found" duration="17"/>
+    <testCase name="Clients Controller Update Client Put Update Clients code 201 Client updated" duration="37"/>
   </file>
 </testExecutions>
