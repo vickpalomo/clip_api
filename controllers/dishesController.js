@@ -7,7 +7,7 @@ const list = (req, res, next) => {
       exclude: ['id']
     }
   }).then(dishes => {
-    if (dishes.length === 0) res.status(404).send({ code: 404, data: {}, msg: 'Not found' })
+    if (dishes.length === 0) return res.status(404).send({ code: 404, data: {}, msg: 'Not found' })
     return res.status(200).send({ code: 200, data: dishes, msg: 'Ok' })
   }).catch(e => {
     next(e)
