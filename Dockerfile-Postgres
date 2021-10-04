@@ -1,0 +1,2 @@
+FROM postgres:11.13
+COPY uuid.sh /docker-entrypoint-initdb.d
