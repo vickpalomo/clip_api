@@ -4,7 +4,7 @@ const { sequelize } = require('../models')
 
 const create = async (req, res, next) => {
   const date = new Date()
-  if (date.getHours() <= 16 || date.getHours() >= 21) return res.status(400).send({ code: 400, data: {}, msg: 'Out of time' })
+  if (date.getHours() < 16 || date.getHours() >= 21) return res.status(400).send({ code: 400, data: {}, msg: 'Out of time' })
   try {
     const client = await db.clients.findOne({
       where: {
